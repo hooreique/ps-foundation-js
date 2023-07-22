@@ -5,6 +5,12 @@ const main = ({ next, nextInt }) => {
 };
 
 (func => {
+    const { stdin } = require('process');
+    // const { Readable } = require('stream');
+
+    const input = stdin;
+    // const input = Readable.from('3 2\nB A R\nA\nB');
+
     const tokens = [];
     let i = -1;
     const scanner = {
@@ -12,7 +18,7 @@ const main = ({ next, nextInt }) => {
         nextInt: () => parseInt(scanner.next()),
     };
     require('readline')
-        .createInterface({ input: require('process').stdin })
+        .createInterface({ input })
         .on('close', () => func(scanner))
         .on('line', line =>
             line
